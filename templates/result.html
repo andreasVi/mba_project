@@ -42,7 +42,7 @@
 				color: rgb(24, 122, 183);
 			}
 
-			h1, h2 {
+			h1, h2, h3 {
 				color: rgb(24, 122, 183);
 			}
 
@@ -56,13 +56,15 @@
 			<div class="card mb-3">
 				<div class="card-header text-center">
 					<h1>Hasil Association Rules</h1>
-					<h2>Menggunakan Algoritma {{ metode }}</h2>
+					<h2>Menggunakan Algoritma <b>{{ metode }}</b></h2>
 					<img src="../static/ithb.png" class="logo" alt="logo ithb">
+					<h3>Jumlah Rules yang dihasilkan: <b>{{ sum_result }}</b></h3>
 				</div>
 				<div class="card-body">
 					{% if metode == 'apriori' %}
 						<table>
 							<tr>
+								<th>No.</th>
 								<th>Rules</th>
 								<th>Support</th>
 								<th>Confidence</th>
@@ -70,6 +72,7 @@
 							</tr>
 							{% for rule in results %}
 								<tr>
+									<td>{{ loop.index }}</td>
 									<td>{{ rule[0] }} &rightarrow; {{ rule[1] }}</td>
 									<td>{{ rule[2] }}</td>
 									<td>{{ rule[3] }}</td>
@@ -81,6 +84,7 @@
 					{% elif metode == 'fpgrowth' %}
 						<table>
 							<tr>
+								<th>No.</th>
 								<th>Rules</th>
 								<th>Support</th>
 								<th>Confidence</th>
@@ -88,6 +92,7 @@
 							</tr>
 							{% for rule in results %}
 								<tr>
+									<td>{{ loop.index }}</td>
 									<td>{{ rule[0] }} &rightarrow; {{ rule[1] }}</td>
 									<td>{{ rule[4] }}</td>
 									<td>{{ rule[5] }}</td>

@@ -62,8 +62,9 @@ def result():
             else:
                 converted_item.append(value)
         converted_data.append(converted_item)
+    total_rules = len(converted_data)
 
-    return render_template('result.html', results=converted_data, metode=algorithm_selected)
+    return render_template('result.html', results=converted_data, metode=algorithm_selected, sum_result=total_rules)
 
 if __name__ == '__main__':
     app.run(debug=True)
